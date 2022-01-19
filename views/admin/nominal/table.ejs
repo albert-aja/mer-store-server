@@ -20,10 +20,13 @@
           action="/nominal/delete/<%= nominal[i]._id %>?_method=DELETE"
           method="POST"
         >
-          <a href="/nominal/edit/<%= nominal[i]._id %>" class="btn btn-warning">
+          <a
+            href="/nominal/edit/<%= nominal[i]._id %>"
+            class="btn btn-sm btn-warning text-white"
+          >
             <i class="fas fa-pencil-alt"></i>Edit
           </a>
-          <button type="submit" class="btn btn-danger">
+          <button type="submit" class="btn btn-sm btn-danger">
             <i class="fas fa-trash-alt"></i>Hapus
           </button>
         </form>
