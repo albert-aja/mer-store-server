@@ -29,10 +29,10 @@
         <span class="badge badge-warning"> Pending </span>
         <% } %>
       </td>
-      <td><%= transaction[i]?.player?.name ?? '-' %></td>
+      <td><%= transaction[i].player.name %></td>
       <td>
         <form
-          action="/transaction/status/<%= transaction[i]._id %>?_method=PUT"
+          action="/transaction/status/<%= transaction[i]._id %>?status=success&_method=PUT"
           method="POST"
           class="d-inline-block"
         >
@@ -41,12 +41,12 @@
           </button>
         </form>
         <form
-          action="/transaction/status/<%= transaction[i]._id %>?_method=PUT"
+          action="/transaction/status/<%= transaction[i]._id %>?status=failed&_method=PUT"
           method="POST"
           class="d-inline-block"
         >
           <button type="submit" class="btn btn-sm btn-danger">
-            <i class="fas fa-times`"></i>Tolak
+            <i class="fas fa-times"></i>Tolak
           </button>
         </form>
       </td>
