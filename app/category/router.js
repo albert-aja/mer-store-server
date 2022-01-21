@@ -9,7 +9,10 @@ const {
   actionDelete,
 } = require("./controller");
 
-/* GET home page. */
+const { isLogin } = require("../middleware/auth");
+
+router.use(isLogin);
+
 router.get("/", index);
 router.get("/create", viewCreate);
 router.post("/create", actionCreate);

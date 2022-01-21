@@ -1,0 +1,49 @@
+<table id="example2" class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Tipe Pembayaran</th>
+      <th>Bank</th>
+      <th>Status</th>
+      <th>Aksi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for(let i = 0; i < payment.length; i++){ %>
+    <tr>
+      <td><%= i+1 %></td>
+      <td><%= payment[i].type %></td>
+      <td>
+        <% payment[i].banks.forEach(bank => { %>
+        <span class="badge badge-info">
+          <%= bank.bankName %> - <%= bank.noRek %> (<%= bank.name%>)
+        </span>
+        <% }) %>
+      </td>
+      <td>
+        <% if(payment[i].status === 'Y'){ %>
+        <span class="badge badge-success"> Aktif </span>
+        <% }else{ %>
+        <span class="badge badge-danger"> Tidak Aktif </span>
+        <% } %>
+      </td>
+      <td>
+        <form
+          action="/payment/delete/<%= payment[i]._id %>?_method=DELETE"
+          method="POST"
+        >
+          <a
+            href="/payment/edit/<%= payment[i]._id %>"
+            class="btn btn-sm btn-warning text-white"
+          >
+            <i class="fas fa-pencil-alt"></i>Edit
+          </a>
+          <button type="submit" class="btn btn-sm btn-danger">
+            <i class="fas fa-trash-alt"></i>Hapus
+          </button>
+        </form>
+      </td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>

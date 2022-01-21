@@ -1,0 +1,56 @@
+<table id="example2" class="table table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nama Game</th>
+      <th>Item</th>
+      <th>Total Harga</th>
+      <th>Status</th>
+      <th>Nama Player</th>
+      <th>Aksi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% for(let i = 0; i < transaction.length; i++){ %>
+    <tr>
+      <td><%= i+1 %></td>
+      <td><%= transaction[i].historyTopUp.gameName %></td>
+      <td>
+        <%= transaction[i].historyTopUp.coinName %> <%=
+        transaction[i].historyTopUp.coinQuantity %>
+      </td>
+      <td><%= transaction[i].historyTopUp.price %></td>
+      <td>
+        <% if(transaction[i].status === 'success'){ %>
+        <span class="badge badge-success"> Success </span>
+        <% } else if(transaction[i].status === 'failed'){ %>
+        <span class="badge badge-danger"> Failed </span>
+        <% } else if(transaction[i].status === 'pending'){ %>
+        <span class="badge badge-warning"> Pending </span>
+        <% } %>
+      </td>
+      <td><%= transaction[i]?.player?.name ?? '-' %></td>
+      <td>
+        <form
+          action="/transaction/status/<%= transaction[i]._id %>?_method=PUT"
+          method="POST"
+          class="d-inline-block"
+        >
+          <button type="submit" class="btn btn-sm btn-success">
+            <i class="fas fa-check"></i>Terima
+          </button>
+        </form>
+        <form
+          action="/transaction/status/<%= transaction[i]._id %>?_method=PUT"
+          method="POST"
+          class="d-inline-block"
+        >
+          <button type="submit" class="btn btn-sm btn-danger">
+            <i class="fas fa-times`"></i>Tolak
+          </button>
+        </form>
+      </td>
+    </tr>
+    <% } %>
+  </tbody>
+</table>
