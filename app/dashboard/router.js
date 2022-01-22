@@ -2,9 +2,9 @@ var express = require("express");
 var router = express.Router();
 const { index } = require("./controller");
 
-const { isLogin } = require("../middleware/auth");
+const { isLoginAdmin } = require("../middleware/auth");
 
-router.use(isLogin);
+router.use(isLoginAdmin);
 router.get("/", index);
 
 module.exports = router;

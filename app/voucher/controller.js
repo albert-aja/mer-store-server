@@ -14,9 +14,7 @@ module.exports = {
 
       const alert = { message: alertMessage, status: alertStatus };
 
-      const voucher = await Voucher.find()
-        .populate("category")
-        .populate("nominals");
+      const voucher = await Voucher.find().populate("nominals category");
       res.render("admin/voucher/view_voucher", {
         voucher,
         alert,

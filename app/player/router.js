@@ -1,23 +1,35 @@
 var express = require("express");
 var router = express.Router();
 const {
-  index,
-  viewCreate,
-  actionCreate,
-  viewEdit,
-  actionEdit,
-  actionDelete,
+  landingPage,
+  detailPage,
+  category,
+  checkout,
+  history,
+  historyDetail,
+  dashboard,
+  getProfile,
+  editProfile,
 } = require("./controller");
 
-const { isLogin } = require("../middleware/auth");
+const multer = require("multer");
+const os = require("os");
 
-router.use(isLogin);
+const { isLoginUser } = require("../middleware/auth");
 
-router.get("/", index);
-router.get("/create", viewCreate);
-router.post("/create", actionCreate);
-router.get("/edit/:id", viewEdit);
-router.put("/edit/:id", actionEdit);
-router.delete("/delete/:id", actionDelete);
+router.get("/landingpage", landingPage);
+router.get("/:id/detail", detailPage);
+router.get("/category", category);
+router.post("/checkout", isLoginUser, checkout);
+router.get("/history", isLoginUser, history);
+router.get("/history/:id/detail", isLoginUser, historyDetail);
+router.get("/dashboard", isLoginUser, dashboard);
+router.get("/profile", isLoginUser, getProfile);
+router.put(
+  "/profile",
+  isLoginUser,
+  multer({ dest: os.tmpdir() }).single("avatar"),
+  editProfile
+);
 
 module.exports = router;

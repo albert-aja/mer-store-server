@@ -10,9 +10,9 @@ const {
   actionDelete,
 } = require("./controller");
 
-const { isLogin } = require("../middleware/auth");
+const { isLoginAdmin } = require("../middleware/auth");
 
-router.use(isLogin);
+router.use(isLoginAdmin);
 
 router.get("/", index);
 router.put("/status/:id", actionStatus);
