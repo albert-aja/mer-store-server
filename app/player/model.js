@@ -41,12 +41,6 @@ let playerSchema = mongoose.Schema(
     fileName: {
       type: String,
     },
-    phoneNumber: {
-      type: String,
-      require: [true, "Nomor Telepon harus diisi"],
-      minlength: [9, "Nomor Telepon harus memiliki setidaknya 9 karakter"],
-      maxlength: [13, "Panjang maksimal nomor telepon adalah 13 karakter"],
-    },
     favorit: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "category",
