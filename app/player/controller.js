@@ -27,13 +27,14 @@ module.exports = {
       const { id } = req.params;
       const voucher = await Voucher.findOne({ _id: id })
         .populate("category nominals")
-        .populate("user", "_id name phoneNumber");
+        .populate("user", "_id name");
+      const payment = await Payment.find().populate("banks");
 
       if (!voucher) {
         return res.status(404).json({ message: "Game tidak ditemukan" });
       }
 
-      res.status(200).json({ data: voucher });
+      res.status(200).json({ data: { voucher, payment } });
     } catch (err) {
       res.status(500).json({ message: err.message || "Internal Server Error" });
     }
