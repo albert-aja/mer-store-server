@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 let transactionSchema = mongoose.Schema(
   {
-    historyTopUp: {
+    historyVoucherTopUp: {
       gameName: { type: String, require: [true, "Nama game harus diisi"] },
       category: { type: String, require: [true, "Kategori harus diisi"] },
       coinName: { type: String, require: [true, "Nama Koin harus diisi"] },
@@ -10,6 +10,7 @@ let transactionSchema = mongoose.Schema(
         type: String,
         require: [true, "Jumlah Koin harus diisi"],
       },
+      thumbnail: { type: String, require: [true, "Thumbnail harus diisi"] },
       price: { type: Number },
     },
     historyPayment: {
