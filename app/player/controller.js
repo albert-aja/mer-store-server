@@ -78,7 +78,7 @@ module.exports = {
       let total = tax + res_nominal._doc.price;
 
       const payload = {
-        historyVoucherTopUp: {
+        historyVoucherTopup: {
           gameName: res_voucher._doc.name,
           category: res_voucher._doc.category
             ? res_voucher._doc.category.name
