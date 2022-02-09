@@ -86,7 +86,7 @@ module.exports = {
           coinName: res_nominal._doc.coinName,
           coinQuantity: res_nominal._doc.coinQuantity,
           price: res_nominal._doc.price,
-          thumbnail: res_nominal._doc.thumbnail,
+          thumbnail: res_voucher._doc.thumbnail,
         },
         historyPayment: {
           name: res_bank._doc.name,
